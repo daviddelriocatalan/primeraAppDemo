@@ -1,0 +1,60 @@
+<div class="container">
+    <h3>{{ titulo }}</h3>
+    <hr>
+    <h4>Información del Alumno</h4>
+    <hr>
+    <h5>Id: {{ alumno1.id }}</h5>
+    <hr>
+    <h5>Nombre: {{ alumno1.nombre }}</h5>
+    <hr>
+    <h5>Apellidos: {{ alumno1.apellidos }}</h5>
+    <hr>
+    <h5>Ciudad: {{ alumno1.ciudad }}</h5>
+    <hr>
+    <h5>El curso acutal es {{ getCurso() }}</h5> 
+    <hr>
+</div>
+
+<input type="text" [placeholder]="texto">
+
+<br>
+<hr>
+<!--CON HTML-->
+<img src="../../assets/foto.jpg" width="350px" height="200px">
+
+<br>
+<hr>
+<!--CON INTERPOLACION-->
+<img src={{foto}} width="350px" height="200px">
+
+<br>
+<hr>
+<!--CON PROPERTY BINDING-->
+<img [src]="foto" width="350px" height="200px">
+
+<br>
+<hr>
+<button class="btn btn-success" (click)="modTexto()">Modificar Texto</button>
+<h3>{{texto1}}</h3>
+
+<br>
+<hr>
+<button class="btn btn-success" (click)="cambiarCosas()">MOSTRAR MENSAJE</button>
+
+<br>
+<hr>
+<label>Introduce una ciudad</label>
+<input type="text" class="form-control" [(ngModel)]="Ciudad">
+<h3>{{Ciudad}}</h3>
+<button class="btn btn-success" (click)="cambiarCiudad()">Cambiar Ciudad</button>
+
+<br>
+<hr>
+<button type="submit" class="btn btn-primary" *ngIf="nombre">Enviar</button>
+<div class="container">
+    <label>Nombre y Apellidos</label>
+    <input type="text"
+    class="form-control" 
+    [(ngModel)]="nombre"
+    placeholder="Complete su nombre y apellidos">
+</div>
