@@ -58,3 +58,83 @@
     [(ngModel)]="nombre"
     placeholder="Complete su nombre y apellidos">
 </div>
+
+<br>
+<hr>
+<label>Nombre y Apellidos</label>
+<input type="text" class="form-control" [(ngModel)]="futbolista" placeholder="Complete su nombre y apellidos">
+<button type="submit" class="btn btn-primary" *ngIf="futbolista; else desactivado" (click)="mostrarFutbolista()">Enviar</button> 
+ <ng-template #desactivado> 
+    <button type="submit" class="btn btn-primary" disabled>Enviar</button>
+ </ng-template>
+
+<br>
+<hr>
+<h3>¿Cuál es la capital de España?</h3> 
+<input type="text" class="form-control" [(ngModel)]="capital"> 
+<p *ngIf="!capital; else correcto">Complete la pregunta</p> 
+<ng-template #correcto>
+    <h4 *ngIf="setResultado(); else incorrecto">¡Correcto!</h4>
+</ng-template>
+<ng-template #incorrecto>
+    <h4>Lo siento, inténtelo de nuevo</h4>
+</ng-template>
+
+<br>
+<hr>
+<h4>Introduzca la puntuación del Alumno</h4>
+<input type="number" class="form-control" [(ngModel)]="puntuacion">
+<hr>
+<h4 style="display: inline-block;">Puntuación obtenida:&nbsp; </h4>
+<h4 style="display: inline-block;" [ngStyle]="{color:setColor()}">{{puntuacion}}</h4>
+
+<br>
+<hr>
+<h4>Introduzca la puntuación del Alumno</h4>
+<input type="text" class="form-control" [(ngModel)]="puntuacion">
+ 
+<div *ngIf="puntuacion"> 
+
+    <h4 *ngIf="puntuacion >= 0 && puntuacion <= 10; else aviso" 
+    [ngClass]="{ aprobado: puntuacion >= 5, suspenso: puntuacion <5 }">
+    Puntuación obtenida: {{ puntuacion }}
+    </h4>
+
+    <ng-template #aviso> 
+        <h4 *ngIf="puntuacion > 10" class="advertencia">
+        Introduzca una puntuación menor a 10</h4>
+        <h4 *ngIf="puntuacion < 0" class="advertencia">
+        Introduzca una puntuación mayor o igual a 0</h4>
+    </ng-template>
+
+</div>
+
+<br>
+<hr>
+
+<h3>Bandas Disponibles</h3>
+<ul>
+    <li *ngFor="let banda of bandas"> <h4>{{ banda }}</h4> </li>
+</ul>
+
+<br>
+<hr>
+<table class="table table-bordered table-striped tabla">
+    <thead>
+        <tr class="filters">
+            <th>id</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Ciudad</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let musico of musicos">
+            <td>{{ musico.id }}</td>
+            <td>{{ musico.nombre }}</td>
+            <td>{{ musico.apellidos }}</td>
+            <td>{{ musico.ciudad }}</td>
+            <td><button class="btn btn-success" (click)="verMusico(musico)"> Ver Musico </button></td>
+        </tr>
+    </tbody>
+</table>
